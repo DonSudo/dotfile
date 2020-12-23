@@ -1,0 +1,240 @@
+set nocompatible
+filetype on 
+filetype indent on
+filetype plugin on 
+filetype plugin indent on
+set number
+set nocompatible
+syntax on
+set showcmd
+set wildmenu
+set encoding=utf-8
+set t_Co=256
+filetype indent on
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set number
+set cursorline
+set textwidth=80
+set wrap
+set linebreak
+set wrapmargin=2
+set scrolloff=5
+set laststatus=2
+set ruler
+set showmatch
+set hlsearch
+exec "nohlsearch"
+set incsearch
+set ignorecase
+set smartcase
+set clipboard=unnamedplus
+set scrolloff=8
+set nobackup
+set nowb
+set noswapfile
+set relativenumber
+let mapleader = "\<space>"
+
+call plug#begin('~/.vim/plugged')
+
+" Vim Airline
+Plug 'vim-airline/vim-airline'
+
+Plug 'vim-airline/vim-airline-themes'
+
+" Snazzy
+Plug 'connorholyday/vim-snazzy'
+
+" coc-nvim 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" vim-indent-guide
+Plug 'yggdroot/indentline'
+
+" auto-pair
+Plug 'jiangmiao/auto-pairs'
+
+" startify
+Plug 'mhinz/vim-startify'
+
+" fuzzy search
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+" surround
+Plug 'tpope/vim-surround'
+
+" undo-tree
+Plug 'mbbill/undotree'
+
+" floaterm
+Plug 'voldikss/vim-floaterm'
+
+
+call plug#end()
+
+
+" airline-config
+let g:airline_powerline_fonts = 1
+let g:airline_theme='dark'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
+
+nnoremap <C-N> :bn<CR>
+nnoremap <C-P> :bp<CR>
+
+" snazzy-config
+"let g:SnazzyTransparent = 1
+
+colorscheme snazzy
+
+let g:lightline = {
+\ 'colorscheme': 'snazzy',
+\ }
+
+" coc-config
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-clangd', 'coc-sh', 'coc-explorer', 'coc-pyright', 'coc-translator', 'coc-snippets' ]
+
+set hidden
+set updatetime=100
+
+" Tab to trigger completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" <CR> to chose the completion
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" coc-explorer
+nmap <space>e :CocCommand explorer<CR>
+
+" coc-snippets
+let g:coc_snippet_next = '<tab>'
+
+" floaterm
+let g:floaterm_keymap_new = '<Leader>fn'
+let g:floaterm_keymap_toggle = '<Leader>fg'
+let g:floaterm_keymap_kill = '<Leader>fk'
+
+" vim-translator
+nmap <Leader>d <Plug>(coc-translator-p)
+
+" Fix the font problem with airline
+" This can also be done by inputting sudo apt install fonts-powerline
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+
+let g:indentLine_color_term = 239
+
+
+" LeaderF config
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2"  }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_ShortcutF = "<leader>ff"
+
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s",")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s",")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s",")<CR><CR>
+
+" undo-tree
+nnoremap <leader>t :UndotreeToggle<CR>
