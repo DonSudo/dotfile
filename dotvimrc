@@ -39,6 +39,12 @@ set noswapfile
 set relativenumber
 let mapleader = "\<space>"
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Vim Airline
@@ -68,10 +74,8 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'tpope/vim-surround'
 
 " undo-tree
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', {'on':'UndotreeToggle'}
 
-" floaterm
-Plug 'voldikss/vim-floaterm'
 
 
 call plug#end()
@@ -154,11 +158,6 @@ nmap <space>e :CocCommand explorer<CR>
 
 " coc-snippets
 let g:coc_snippet_next = '<tab>'
-
-" floaterm
-let g:floaterm_keymap_new = '<Leader>fn'
-let g:floaterm_keymap_toggle = '<Leader>fg'
-let g:floaterm_keymap_kill = '<Leader>fk'
 
 " vim-translator
 nmap <Leader>d <Plug>(coc-translator-p)
