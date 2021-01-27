@@ -60,17 +60,17 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim-indent-guide
 Plug 'yggdroot/indentline'
 
-" auto-pair
-Plug 'jiangmiao/auto-pairs'
-
 " startify
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 
 " fuzzy search
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 " surround
 Plug 'tpope/vim-surround'
+
+" repeat
+Plug 'tpope/vim-repeat'
 
 " undo-tree
 Plug 'mbbill/undotree', {'on':'UndotreeToggle'}
@@ -85,10 +85,16 @@ Plug 'mg979/vim-xtabline'
 Plug 'ryanoasis/vim-devicons'
 
 " vista
-Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim', {'on':'Vista'}
+
+" register
+Plug 'junegunn/vim-peekaboo'
 
 " floaterm
-Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm' 
+
+" yank highlight
+Plug 'machakann/vim-highlightedyank'
 
 call plug#end()
 
@@ -103,11 +109,11 @@ set background=dark
 
 "lightline
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'powerline',
       \ }
 
 " coc-config
-let g:coc_global_extensions = ['coc-vimlsp', 'coc-clangd', 'coc-sh', 'coc-explorer', 'coc-pyright', 'coc-translator', 'coc-snippets', 'coc-git' ]
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-clangd', 'coc-sh', 'coc-explorer', 'coc-pyright', 'coc-translator', 'coc-snippets', 'coc-pairs', 'coc-yank' ]
 
 set hidden
 set updatetime=100
@@ -182,6 +188,10 @@ xmap <leader>x  <Plug>(coc-convert-snippet)
 
 let g:coc_snippet_next = '<tab>'
 
+" coc-yank
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+nnoremap <leader>yc :CocCommand yank.clean
+
 " vim-translator
 nmap <Leader>d <Plug>(coc-translator-p)
 
@@ -225,6 +235,8 @@ nnoremap <leader>t :UndotreeToggle<CR>
 
 " vista config
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista#renderer#enable_icon = 1
+let g:vista_cursor_delay = 300
 nnoremap <leader>v :Vista<return>
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
@@ -245,3 +257,4 @@ let g:xtabline_settings = get(g:, 'xtabline_settings', {})
 let g:xtabline_settings.enable_mappings = 0
 " themes : monokai dracula 
 let g:xtabline_settings.theme = 'monokai'
+
