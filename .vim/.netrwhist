@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/etc'
+let g:netrw_dirhist_8='/home/yezi/.config/nvim'
+let g:netrw_dirhist_7='/home/yezi/.config'
+let g:netrw_dirhist_6='/home/yezi/.vim/plugged/coc.nvim/autoload'
+let g:netrw_dirhist_5='/home/yezi/.vim/plugged/coc.nvim/autoload/coc'
+let g:netrw_dirhist_4='/home/yezi/.vim/plugged/coc.nvim/autoload'
+let g:netrw_dirhist_3='/home/yezi/.vim/plugged/coc.nvim'
+let g:netrw_dirhist_2='/home/yezi/.vim/plugged'
+let g:netrw_dirhist_1='/home/yezi/.vim'
