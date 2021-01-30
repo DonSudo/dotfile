@@ -231,7 +231,7 @@ noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s",")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s",")<CR><CR>
 
 " undo-tree
-nnoremap <leader>t :UndotreeToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " vista config
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -256,6 +256,8 @@ let g:floaterm_keymap_kill = '<leader>wk'
 let g:xtabline_lazy = 1
 let g:xtabline_settings = get(g:, 'xtabline_settings', {})
 let g:xtabline_settings.enable_mappings = 0
+let g:xtabline_settings.tabline_modes = ['buffers', 'tabs']
 " themes : monokai dracula 
 let g:xtabline_settings.theme = 'monokai'
+nnoremap <leader>t :XTabMode<return>
 
