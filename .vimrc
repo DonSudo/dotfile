@@ -191,7 +191,12 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nnoremap <leader>yc :CocCommand yank.clean <return>
 
 " vim-translator
+" popup
 nmap <Leader>t <Plug>(coc-translator-p)
+vmap <Leader>t <Plug>(coc-translator-pv)
+" echo
+nmap <Leader>te <Plug>(coc-translator-e)
+vmap <Leader>te <Plug>(coc-translator-ev)
 
 " indentLine
 let g:indentLine_color_term = 239

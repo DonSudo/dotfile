@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/yezi/.doom.d'
 let g:netrw_dirhist_9='/etc'
 let g:netrw_dirhist_8='/home/yezi/.config/nvim'
 let g:netrw_dirhist_7='/home/yezi/.config'
