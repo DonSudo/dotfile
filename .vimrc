@@ -96,6 +96,9 @@ Plug 'voldikss/vim-floaterm'
 " yank highlight
 Plug 'machakann/vim-highlightedyank'
 
+" vimwiki
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
 nnoremap <C-N> :bn<CR>
@@ -249,11 +252,11 @@ let g:vista#renderer#icons = {
 \  }
 
 " floaterm keymap
-let g:floaterm_keymap_new    = '<leader>wn'
-let g:floaterm_keymap_prev   = '<leader>wk'
-let g:floaterm_keymap_next   = '<leader>wj'
-let g:floaterm_keymap_toggle = '<leader>wt'
-let g:floaterm_keymap_kill = '<leader>wk'
+let g:floaterm_keymap_new    = '<leader>on'
+let g:floaterm_keymap_prev   = '<leader>ok'
+let g:floaterm_keymap_next   = '<leader>oj'
+let g:floaterm_keymap_toggle = '<leader>ot'
+let g:floaterm_keymap_kill = '<leader>ok'
 
 " xtabline
 let g:xtabline_lazy = 1
