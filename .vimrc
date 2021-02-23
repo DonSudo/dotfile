@@ -266,3 +266,9 @@ let g:xtabline_settings.tabline_modes = ['buffers', 'tabs']
 " themes : monokai dracula 
 let g:xtabline_settings.theme = 'monokai'
 
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/ownwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:vimwiki_listsyms = '✗○◐●✓'
